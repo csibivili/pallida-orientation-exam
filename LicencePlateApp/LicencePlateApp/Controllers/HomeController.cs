@@ -1,6 +1,8 @@
-﻿using LicencePlateApp.Service;
+﻿using LicencePlateApp.Models;
+using LicencePlateApp.Service;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace LicencePlateApp.Controllers
 {
@@ -18,7 +20,20 @@ namespace LicencePlateApp.Controllers
         [Route("/search")]
         public IActionResult Search(string q, int police, int diplomat)
         {
-            return View();
+            List<LicencePlate> cars = new List<LicencePlate>();
+            if (q != null)
+            {
+                cars.Add(LicencePlateService.SearchForCarByPlate(q));
+            }
+            if (police == 1)
+            {
+                cars = LicencePlateService.PoliceCars();
+            }
+            if (diplomat == 1)
+            {
+                cars = LicencePlateService.DiplomatCars();
+            }
+            return View(cars);
         }
 
         [HttpGet]
