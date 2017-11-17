@@ -1,5 +1,7 @@
 ﻿using LicencePlateApp.Entities;
 using LicencePlateApp.Models;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace LicencePlateApp.Repository
 {
@@ -15,6 +17,16 @@ namespace LicencePlateApp.Repository
         public LicencePlate SearchForCarByPlate(string plate)
         {
             return LicencePlateContext.Licence_plates.Find(plate);
+        }
+
+        public List<LicencePlate> PoliceCars()
+        {
+            return LicencePlateContext.Licence_plates.Where(p => p.Plate.StartsWith("RB")).ToList();
+        }
+
+        public List<LicencePlate> DiplomatCars()
+        {
+            return LicencePlateContext.Licence_plates.Where(p => p.Plate.StartsWith("DT")).ToList();
         }
     }
 }
