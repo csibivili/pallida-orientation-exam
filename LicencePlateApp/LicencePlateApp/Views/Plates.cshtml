@@ -1,9 +1,40 @@
-﻿<!doctype html>
+﻿@model List<LicencePlateApp.Models.LicencePlate>
+<!doctype html>
 
 <html>
 <head>
     <title>Plates</title>
 </head>
 <body>
+    <form action="/search" method="post">
+        <label for="q">Licence Plate: </label>
+        <input type="text" name="q">
+        <button type="submit">Search</button>
+    </form>
+    <a href="/search?police=1">Police Cars</a>
+    <a href="/search?diplomat=1">Diplomatic Cars</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Licence Plate</th>                
+                <th>Brand</th>
+                <th>Model</th>                
+                <th>Color</th>               
+                <th>Year</th>                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var car in @Model)
+            {
+                <tr>
+                    <td>@car.Plate</td>
+                    <td>@car.Car_brand</td>
+                    <td>@car.Car_model</td>
+                    <td>@car.Color</td>
+                    <td>@car.Year</td>
+                </tr>
+            }           
+        </tbody>
+    </table>
 </body>
 </html>
