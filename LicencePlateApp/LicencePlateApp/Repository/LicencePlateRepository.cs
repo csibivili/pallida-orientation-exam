@@ -1,4 +1,5 @@
 ﻿using LicencePlateApp.Entities;
+using LicencePlateApp.Models;
 
 namespace LicencePlateApp.Repository
 {
@@ -9,6 +10,11 @@ namespace LicencePlateApp.Repository
         public LicencePlateRepository(LicencePlateContext licencePlateContext)
         {
             LicencePlateContext = licencePlateContext;
+        }
+
+        public LicencePlate SearchForCarByPlate(string plate)
+        {
+            return LicencePlateContext.Licence_plates.Find(plate);
         }
     }
 }
