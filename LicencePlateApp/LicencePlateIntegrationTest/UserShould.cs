@@ -1,13 +1,11 @@
-using LicencePlateApp.Controllers;
 using LicencePlateApp.Entities;
+using LicencePlateApp.Models;
+using LicencePlateApp.Repository;
 using LicencePlateApp.Service;
 using Microsoft.EntityFrameworkCore;
-using System;
-using Xunit;
-using LicencePlateApp.Repository;
-using LicencePlateApp.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Xunit;
 
 namespace LicencePlateIntegrationTest
 {
