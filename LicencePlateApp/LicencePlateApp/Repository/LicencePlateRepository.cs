@@ -7,6 +7,9 @@ namespace LicencePlateApp.Repository
 {
     public class LicencePlateRepository
     {
+        private readonly string ACAB = "RB";
+        private readonly string RichPeopleWhoCanUseBusLaneWithoutRealAPurpose = "DT";
+
         private LicencePlateContext LicencePlateContext;
 
         public LicencePlateRepository(LicencePlateContext licencePlateContext)
@@ -21,12 +24,12 @@ namespace LicencePlateApp.Repository
 
         public List<LicencePlate> PoliceCars()
         {
-            return LicencePlateContext.Licence_plates.Where(p => p.Plate.StartsWith("RB")).ToList();
+            return LicencePlateContext.Licence_plates.Where(p => p.Plate.StartsWith(ACAB)).ToList();
         }
 
         public List<LicencePlate> DiplomatCars()
         {
-            return LicencePlateContext.Licence_plates.Where(p => p.Plate.StartsWith("DT")).ToList();
+            return LicencePlateContext.Licence_plates.Where(p => p.Plate.StartsWith(RichPeopleWhoCanUseBusLaneWithoutRealAPurpose)).ToList();
         }
 
         public List<LicencePlate> CarsWithSameBrand(string brand)
