@@ -29,7 +29,7 @@ namespace LicencePlateApp.Repository
 
         public List<LicencePlate> DiplomatCars()
         {
-            return LicencePlateContext.Licence_plates.Where(p => p.Plate.StartsWith(RichPeopleWhoCanUseBusLaneWithoutRealAPurpose)).ToList();
+            return LicencePlateContext.Licence_plates.Where(p => p.Plate.StartsWith(RichPeopleWhoCanUseBusLaneWithoutRealPurpose)).ToList();
         }
 
         public List<LicencePlate> CarsWithSameBrand(string brand)
