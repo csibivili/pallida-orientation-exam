@@ -1,6 +1,7 @@
 ﻿using LicencePlateApp.Models;
 using LicencePlateApp.Repository;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace LicencePlateApp.Service
 {
@@ -15,27 +16,31 @@ namespace LicencePlateApp.Service
 
         public List<LicencePlate> SearchForCarByPlate(string plate)
         {
-            string letters = string.Empty;
-            string numbers = string.Empty;
-            int result = 0;
-
-            string[] plateParts = plate.Split('-');
-
-            if (int.TryParse(plateParts[0], out result))
+            if (PlateCheck(plate))
             {
-                numbers = result.ToString();
-            }
-            else
-            {
-                if (plateParts.Length > 1)
+                string letters = string.Empty;
+                string numbers = string.Empty;
+                int result = 0;
+
+                string[] plateParts = plate.Split('-');
+
+                if (int.TryParse(plateParts[0], out result))
                 {
-                    letters = plateParts[0];
-                    numbers = plateParts[1];
+                    numbers = result.ToString();
                 }
-                letters = plateParts[0];
-            }
+                else
+                {
+                    if (plateParts.Length > 1)
+                    {
+                        letters = plateParts[0];
+                        numbers = plateParts[1];
+                    }
+                    letters = plateParts[0];
+                }
 
-            return LicencePlateRepository.SearchForCarByPlate(letters, numbers);
+                return LicencePlateRepository.SearchForCarByPlate(letters, numbers);
+            }
+            return new List<LicencePlate>();
         }
 
         public List<LicencePlate> PoliceCars()
@@ -46,6 +51,19 @@ namespace LicencePlateApp.Service
         public List<LicencePlate> DiplomatCars()
         {
             return LicencePlateRepository.DiplomatCars();
+        }
+
+        public bool PlateCheck(string plate)
+        {
+            if (plate.Length > 7)
+            {
+                return false;
+            }
+            if (plate.IndexOf('-') != -1)
+            {
+                plate.Remove(plate.IndexOf('-'));
+            }
+            return plate.Any(p => char.IsLetterOrDigit(p));
         }
     }
 }
