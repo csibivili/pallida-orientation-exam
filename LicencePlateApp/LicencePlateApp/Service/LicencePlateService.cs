@@ -15,7 +15,27 @@ namespace LicencePlateApp.Service
 
         public List<LicencePlate> SearchForCarByPlate(string plate)
         {
-            return LicencePlateRepository.SearchForCarByPlate(plate);
+            string letters = string.Empty;
+            string numbers = string.Empty;
+            int result = 0;
+
+            string[] plateParts = plate.Split('-');
+
+            if (int.TryParse(plateParts[0], out result))
+            {
+                numbers = result.ToString();
+            }
+            else
+            {
+                if (plateParts.Length > 1)
+                {
+                    letters = plateParts[0];
+                    numbers = plateParts[1];
+                }
+                letters = plateParts[0];
+            }
+
+            return LicencePlateRepository.SearchForCarByPlate(letters, numbers);
         }
 
         public List<LicencePlate> PoliceCars()
