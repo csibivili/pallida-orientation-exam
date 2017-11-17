@@ -1,5 +1,6 @@
 ﻿using LicencePlateApp.Models;
 using LicencePlateApp.Service;
+using LicencePlateApp.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Collections.Generic;
@@ -49,7 +50,19 @@ namespace LicencePlateApp.Controllers
         [Route("/api/search/{brand}")]
         public IActionResult ApiBrandSearch(string brand)
         {
-            return View();
+            CarList carList = new CarList();
+            Cars = LicencePlateService.CarsWithSameBrand(brand);
+            if (Cars.Count != 0)
+            {
+                carList.Result = "ok";
+                carList.Data = Cars;
+            }
+            else
+            {
+                carList.Result = "notfound";
+                carList.Data = Cars;
+            }
+            return Json(carList);
         }
     }
 }
