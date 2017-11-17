@@ -24,7 +24,7 @@ namespace LicencePlateApp.Controllers
         [Route("/api/search/{brand}")]
         public IActionResult ApiBrandSearch(string brand)
         {
-            return Json();
+            return View();
         }
     }
 }
