@@ -10,37 +10,39 @@ namespace LicencePlateApp.Controllers
     public class HomeController : Controller
     {
         private LicencePlateService LicencePlateService;
+        List<LicencePlate> Cars;
 
         public HomeController(LicencePlateService licencePlateService)
         {
             LicencePlateService = licencePlateService;
+            Cars = new List<LicencePlate>();
         }
 
         [HttpGet]
         [Route("/search")]
         public IActionResult Search(string q, int police, int diplomat)
         {
-            List<LicencePlate> cars = new List<LicencePlate>();
             if (q != null)
             {
-                cars = LicencePlateService.SearchForCarByPlate(q);
+                Cars = LicencePlateService.SearchForCarByPlate(q);
             }
             if (police == 1)
             {
-                cars = LicencePlateService.PoliceCars();
+                Cars = LicencePlateService.PoliceCars();
             }
             if (diplomat == 1)
             {
-                cars = LicencePlateService.DiplomatCars();
+                Cars = LicencePlateService.DiplomatCars();
             }
-            return View("Plates",cars);
+            return View("Plates",Cars);
         }
 
         [HttpGet]
         [Route("/search/{brand}")]
         public IActionResult BrandSearch(string brand)
         {
-            return View();
+            Cars = LicencePlateService.CarsWithSameBrand(brand);
+            return View("Plates", Cars);
         }
 
         [HttpGet]

@@ -40,7 +40,7 @@ namespace LicencePlateApp.Service
 
                 return LicencePlateRepository.SearchForCarByPlate(letters, numbers);
             }
-            return new List<LicencePlate>();
+            return new List<LicencePlate>() { new LicencePlate() { Plate= "Sorry, the submitted licence plate is not valid" } };
         }
 
         public List<LicencePlate> PoliceCars()
@@ -53,6 +53,11 @@ namespace LicencePlateApp.Service
             return LicencePlateRepository.DiplomatCars();
         }
 
+        public List<LicencePlate> CarsWithSameBrand(string brand)
+        {
+            return LicencePlateRepository.CarsWithSameBrand(brand);
+        }
+
         public bool PlateCheck(string plate)
         {
             if (plate.Length > 7)
@@ -62,7 +67,7 @@ namespace LicencePlateApp.Service
             if (plate.IndexOf('-') != -1)
             {
                 plate.Remove(plate.IndexOf('-'));
-            }
+            }           
             return plate.Any(p => char.IsLetterOrDigit(p));
         }
     }
