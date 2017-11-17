@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using LicencePlateApp.Service;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
 namespace LicencePlateApp.Controllers
@@ -6,6 +7,13 @@ namespace LicencePlateApp.Controllers
     [Route("/")]
     public class HomeController : Controller
     {
+        private LicencePlateService LicencePlateService;
+
+        public HomeController(LicencePlateService licencePlateService)
+        {
+            LicencePlateService = licencePlateService;
+        }
+
         [HttpGet]
         [Route("/search")]
         public IActionResult Search(string q, int police, int diplomat)
