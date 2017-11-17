@@ -24,8 +24,11 @@ namespace LicencePlateIntegrationTest
         {
             using(var licencePlateContext = new LicencePlateContext(optionsBuilder.Options))
             {
-                var homeController = new HomeController(new LicencePlateService(new LicencePlateRepository(licencePlateContext)));
+                var licencePlateService = new LicencePlateService(new LicencePlateRepository(licencePlateContext));
 
+                var car = licencePlateService.SearchForCarByPlate("CICA-93");
+
+                Assert.Equal("CICA-93", car.Plate);
             }
         }
     }
