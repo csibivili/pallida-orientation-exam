@@ -60,7 +60,7 @@ namespace LicencePlateApp.Service
 
         public bool PlateCheck(string plate)
         {
-            if (plate.Length > 7)
+            if (plate.Length > 7 || plate.Any(p => char.IsWhiteSpace(p)))
             {
                 return false;
             }
