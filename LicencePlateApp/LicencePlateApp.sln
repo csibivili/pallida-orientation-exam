@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LicencePlateApp", "LicencePlateApp\LicencePlateApp.csproj", "{D3A5A743-D1B4-4E6F-9B4C-62B9220D3F67}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LicencePlateApp", "LicencePlateApp\LicencePlateApp.csproj", "{D3A5A743-D1B4-4E6F-9B4C-62B9220D3F67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LicencePlateIntegrationTest", "LicencePlateIntegrationTest\LicencePlateIntegrationTest.csproj", "{58F6F93D-6E99-45BB-B0F6-3E92DE9CD84A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{D3A5A743-D1B4-4E6F-9B4C-62B9220D3F67}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3A5A743-D1B4-4E6F-9B4C-62B9220D3F67}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3A5A743-D1B4-4E6F-9B4C-62B9220D3F67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58F6F93D-6E99-45BB-B0F6-3E92DE9CD84A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58F6F93D-6E99-45BB-B0F6-3E92DE9CD84A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58F6F93D-6E99-45BB-B0F6-3E92DE9CD84A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58F6F93D-6E99-45BB-B0F6-3E92DE9CD84A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

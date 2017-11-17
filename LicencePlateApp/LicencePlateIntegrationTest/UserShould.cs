@@ -22,19 +22,6 @@ namespace LicencePlateIntegrationTest
         }
 
         [Fact]
-        public void SearchForCarByPlate()
-        {
-            using(var licencePlateContext = new LicencePlateContext(optionsBuilder.Options))
-            {
-                var licencePlateService = new LicencePlateService(new LicencePlateRepository(licencePlateContext));
-
-                var car = licencePlateService.SearchForCarByPlate("CICA-93");
-
-                Assert.Equal("CICA-93", car.Plate);
-            }
-        }
-
-        [Fact]
         public void SearchForPoliceCars()
         {
             using (var licencePlateContext = new LicencePlateContext(optionsBuilder.Options))
@@ -59,6 +46,23 @@ namespace LicencePlateIntegrationTest
 
                 Assert.Equal(policeCars.First().Plate.Substring(0, 2), "DT");
                 Assert.Equal(policeCars.Last().Plate.Substring(0, 2), "DT");
+            }
+        }
+
+        [Fact]
+        public void SearchForCarByPartOfAPlate()
+        {
+            using (var licencePlateContext = new LicencePlateContext(optionsBuilder.Options))
+            {
+                var licencePlateService = new LicencePlateService(new LicencePlateRepository(licencePlateContext));
+
+                List<LicencePlate> cars = licencePlateService.SearchForCarByPlate("CI");
+                List<LicencePlate> cars2 = licencePlateService.SearchForCarByPlate("1");
+                List<LicencePlate> cars3 = licencePlateService.SearchForCarByPlate("CI-1");
+
+                Assert.Equal(true, cars.First().Plate.Contains("CI"));
+                Assert.Equal(true, cars2.First().Plate.Contains("1"));
+                Assert.Equal(true, cars3.First().Plate.Contains("1") && cars3.First().Plate.Contains("CI"));
             }
         }
     }
