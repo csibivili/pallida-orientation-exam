@@ -8,7 +8,7 @@ namespace LicencePlateApp.Repository
     public class LicencePlateRepository
     {
         private readonly string ACAB = "RB";
-        private readonly string RichPeopleWhoCanUseBusLaneWithoutRealAPurpose = "DT";
+        private readonly string RichPeopleWhoCanUseBusLaneWithoutRealPurpose = "DT";
 
         private LicencePlateContext LicencePlateContext;
 
