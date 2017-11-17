@@ -13,7 +13,7 @@ namespace LicencePlateApp.Service
             LicencePlateRepository = licencePlateRepository;
         }
 
-        public LicencePlate SearchForCarByPlate(string plate)
+        public List<LicencePlate> SearchForCarByPlate(string plate)
         {
             return LicencePlateRepository.SearchForCarByPlate(plate);
         }

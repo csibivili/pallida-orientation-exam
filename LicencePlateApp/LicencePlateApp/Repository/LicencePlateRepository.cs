@@ -14,9 +14,9 @@ namespace LicencePlateApp.Repository
             LicencePlateContext = licencePlateContext;
         }
 
-        public LicencePlate SearchForCarByPlate(string plate)
+        public List<LicencePlate> SearchForCarByPlate(string plate)
         {
-            return LicencePlateContext.Licence_plates.Find(plate);
+            return LicencePlateContext.Licence_plates.Where(p => p.Plate == plate).ToList();
         }
 
         public List<LicencePlate> PoliceCars()

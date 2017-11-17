@@ -23,7 +23,7 @@ namespace LicencePlateApp.Controllers
             List<LicencePlate> cars = new List<LicencePlate>();
             if (q != null)
             {
-                cars.Add(LicencePlateService.SearchForCarByPlate(q));
+                cars = LicencePlateService.SearchForCarByPlate(q);
             }
             if (police == 1)
             {
@@ -33,7 +33,7 @@ namespace LicencePlateApp.Controllers
             {
                 cars = LicencePlateService.DiplomatCars();
             }
-            return View(cars);
+            return View("Plates",cars);
         }
 
         [HttpGet]
